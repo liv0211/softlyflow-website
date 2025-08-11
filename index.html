@@ -839,334 +839,787 @@
     </div>
 
     <script>
-        // 等待DOM加载完成
-        document.addEventListener('DOMContentLoaded', function() {
-            
-            // 翻译对象
-            const translations = {
-                'zh-CN': {
-                    title: '数字圣所',
-                    subtitle: '你的宁静治愈空间',
-                    currentLang: '简体中文',
-                    navQuote: '每日禅语',
-                    navTimer: '专注计时',
-                    navMystic: '玄学区域',
-                    navGames: '减压游戏',
-                    navPsychology: '心理角落',
-                    navBreathing: '呼吸练习',
-                    navJournal: '情感日记',
-                    navSounds: '自然音效',
-                    newQuote: '新语录',
-                    start: '开始',
-                    pause: '暂停',
-                    reset: '重置',
-                    breatheIn: '吸气',
-                    breatheOut: '呼气',
-                    tarotTitle: '塔罗牌',
-                    drawCard: '抽牌',
-                    moodCheck: '检查心情',
-                    saveJournal: '保存日记',
-                    viewJournal: '查看记录',
-                    clearJournal: '清空',
-                    playSound: '播放',
-                    privacyNotice: '隐私声明：所有数据仅存储在您的设备上。我们不会收集任何个人信息。'
-                },
-                'zh-TW': {
-                    title: '數位聖所',
-                    subtitle: '你的寧靜治癒空間',
-                    currentLang: '繁體中文',
-                    navQuote: '每日禪語',
-                    navTimer: '專注計時',
-                    navMystic: '玄學區域',
-                    navGames: '減壓遊戲',
-                    navPsychology: '心理角落',
-                    navBreathing: '呼吸練習',
-                    navJournal: '情感日記',
-                    navSounds: '自然音效',
-                    newQuote: '新語錄',
-                    start: '開始',
-                    pause: '暫停',
-                    reset: '重置',
-                    breatheIn: '吸氣',
-                    breatheOut: '呼氣',
-                    tarotTitle: '塔羅牌',
-                    drawCard: '抽牌',
-                    moodCheck: '檢查心情',
-                    saveJournal: '保存日記',
-                    viewJournal: '查看記錄',
-                    clearJournal: '清空',
-                    playSound: '播放',
-                    privacyNotice: '隱私聲明：所有數據僅存儲在您的設備上。我們不會收集任何個人信息。'
-                },
-                'en': {
-                    title: 'Digital Sanctuary',
-                    subtitle: 'Your peaceful healing space',
-                    currentLang: 'English',
-                    navQuote: 'Daily Quotes',
-                    navTimer: 'Focus Timer',
-                    navMystic: 'Mystic Zone',
-                    navGames: 'Relaxing Games',
-                    navPsychology: 'Psychology Corner',
-                    navBreathing: 'Breathing Exercise',
-                    navJournal: 'Emotional Journal',
-                    navSounds: 'Nature Sounds',
-                    newQuote: 'New Quote',
-                    start: 'Start',
-                    pause: 'Pause',
-                    reset: 'Reset',
-                    breatheIn: 'Breathe In',
-                    breatheOut: 'Breathe Out',
-                    tarotTitle: 'Tarot Cards',
-                    drawCard: 'Draw Card',
-                    moodCheck: 'Check Mood',
-                    saveJournal: 'Save Journal',
-                    viewJournal: 'View Entries',
-                    clearJournal: 'Clear',
-                    playSound: 'Play',
-                    privacyNotice: 'Privacy Notice: All data is stored locally on your device only. We do not collect any personal information.'
-                },
-                'ko': {
-                    title: '디지털 성소',
-                    subtitle: '당신의 평화로운 치유 공간',
-                    currentLang: '한국어',
-                    navQuote: '일일 선어',
-                    navTimer: '집중 타이머',
-                    navMystic: '신비한 영역',
-                    navGames: '스트레스 해소',
-                    navPsychology: '심리학 코너',
-                    navBreathing: '호흡 운동',
-                    navJournal: '감정 일기',
-                    navSounds: '자연음',
-                    newQuote: '새로운 인용구',
-                    start: '시작',
-                    pause: '일시정지',
-                    reset: '재설정',
-                    breatheIn: '들숨',
-                    breatheOut: '날숨',
-                    tarotTitle: '타로 카드',
-                    drawCard: '카드 뽑기',
-                    moodCheck: '기분 확인',
-                    saveJournal: '일기 저장',
-                    viewJournal: '기록 보기',
-                    clearJournal: '지우기',
-                    playSound: '재생',
-                    privacyNotice: '개인정보 보호: 모든 데이터는 귀하의 기기에만 로컬로 저장됩니다. 우리는 개인 정보를 수집하지 않습니다.'
-                },
-                'ja': {
-                    title: 'デジタル聖所',
-                    subtitle: 'あなたの静寂な癒しの空間',
-                    currentLang: '日本語',
-                    navQuote: '日々の禅',
-                    navTimer: '集中タイマー',
-                    navMystic: '神秘的な領域',
-                    navGames: 'ストレス解消',
-                    navPsychology: '心理学',
-                    navBreathing: '呼吸運動',
-                    navJournal: '感情日記',
-                    navSounds: '自然音',
-                    newQuote: '新しい引用',
-                    start: '開始',
-                    pause: '一時停止',
-                    reset: 'リセット',
-                    breatheIn: '吸気',
-                    breatheOut: '呼気',
-                    tarotTitle: 'タロットカード',
-                    drawCard: 'カードを引く',
-                    moodCheck: '気分チェック',
-                    saveJournal: '日記を保存',
-                    viewJournal: '記録を見る',
-                    clearJournal: 'クリア',
-                    playSound: '再生',
-                    privacyNotice: 'プライバシー通知：すべてのデータはお客様のデバイスにのみローカルに保存されます。個人情報は収集いたしません。'
-                }
-            };
-
-            // 治愈语录数据
-            const quotes = {
-                'zh-CN': [
-                    "每一个今天都是昨天死去的人期待的明天。",
-                    "生活不是等待暴风雨过去，而是学会在雨中起舞。",
-                    "你现在的努力，是你未来的底气。",
-                    "世界以痛吻我，我却报之以歌。",
-                    "山有峰顶，海有彼岸，漫漫长途，终有回转。",
-                    "星光不问赶路人，岁月不负有心人。",
-                    "愿你有好运，如果没有，愿你在不幸中学会慈悲。",
-                    "生命中最重要的不是所站的位置，而是所朝的方向。"
-                ],
-                'zh-TW': [
-                    "每一個今天都是昨天死去的人期待的明天。",
-                    "生活不是等待暴風雨過去，而是學會在雨中起舞。",
-                    "你現在的努力，是你未來的底氣。",
-                    "世界以痛吻我，我卻報之以歌。",
-                    "山有峰頂，海有彼岸，漫長長途，終有回轉。",
-                    "星光不問趕路人，歲月不負有心人。",
-                    "願你有好運，如果沒有，願你在不幸中學會慈悲。",
-                    "生命中最重要的不是所站的位置，而是所朝的方向。"
-                ],
-                'en': [
-                    "Every today is the tomorrow that someone who died yesterday was looking forward to.",
-                    "Life isn't about waiting for the storm to pass, it's about learning to dance in the rain.",
-                    "Your current efforts are the confidence of your future.",
-                    "The world kissed me with pain, but I sang back.",
-                    "Mountains have peaks, seas have shores, the long journey will eventually turn around.",
-                    "Stars don't ask travelers, time doesn't disappoint those who care.",
-                    "May you have good luck, if not, may you learn compassion in misfortune.",
-                    "The most important thing in life is not where you stand, but the direction you face."
-                ],
-                'ko': [
-                    "오늘은 어제 죽은 사람이 기다리던 내일입니다.",
-                    "인생은 폭풍이 지나가기를 기다리는 것이 아니라, 비 속에서 춤추는 법을 배우는 것입니다.",
-                    "지금의 노력은 미래의 자신감입니다.",
-                    "세상이 고통으로 나에게 키스를 했지만, 나는 노래로 대답했습니다.",
-                    "산에는 정상이 있고, 바다에는 언덕이 있으며, 긴 여정은 결국 돌아옵니다.",
-                    "별들은 여행자를 묻지 않고, 시간은 마음을 쓰는 사람을 실망시키지 않습니다.",
-                    "행운이 있기를 바랍니다. 없다면, 불운 속에서 자비를 배우기를 바랍니다.",
-                    "인생에서 가장 중요한 것은 서 있는 위치가 아니라 향하는 방향입니다."
-                ],
-                'ja': [
-                    "今日は昨日死んだ人が期待していた明日です。",
-                    "人生は嵐が過ぎ去るのを待つことではなく、雨の中で踊ることを学ぶことです。",
-                    "今の努力は、あなたの未来の自信です。",
-                    "世界は痛みで私にキスをしましたが、私は歌で返しました。",
-                    "山には頂があり、海には岸があり、長い旅路は最終的に回ってきます。",
-                    "星は旅人に尋ねず、時間は心を配る人を失望させません。",
-                    "幸運がありますように。なければ、不幸の中で慈悲を学びますように。",
-                    "人生で最も重要なのは立っている場所ではなく、向いている方向です。"
-                ]
-            };
-
-            // 当前语言
-            let currentLang = localStorage.getItem('lang') || 'zh-CN';
-            let currentSection = 'quote';
-            let timerInterval;
-            let timerMinutes = 25;
-            let timerSeconds = 0;
-            let isTimerRunning = false;
-
-            // 语言切换功能
-            const languageBtn = document.getElementById('languageBtn');
-            const languageDropdown = document.getElementById('languageDropdown');
-            
-            if (languageBtn) {
-                languageBtn.addEventListener('click', function(e) {
-                    e.stopPropagation();
-                    languageDropdown.classList.toggle('show');
-                });
+        <script>
+    // 等待DOM加载完成
+    document.addEventListener('DOMContentLoaded', function() {
+        
+        // 翻译对象
+        const translations = {
+            'zh-CN': {
+                title: '数字圣所',
+                subtitle: '你的宁静治愈空间',
+                currentLang: '简体中文',
+                navQuote: '每日禅语',
+                navTimer: '专注计时',
+                navMystic: '玄学区域',
+                navGames: '减压游戏',
+                navPsychology: '心理角落',
+                navBreathing: '呼吸练习',
+                navJournal: '情感日记',
+                navSounds: '自然音效',
+                newQuote: '新语录',
+                start: '开始',
+                pause: '暂停',
+                reset: '重置',
+                breatheIn: '吸气',
+                breatheOut: '呼气',
+                tarotTitle: '塔罗牌',
+                drawCard: '抽牌',
+                moodCheck: '检查心情',
+                saveJournal: '保存日记',
+                viewJournal: '查看记录',
+                clearJournal: '清空',
+                playSound: '播放',
+                privacyNotice: '隐私声明：所有数据仅存储在您的设备上。我们不会收集任何个人信息。'
+            },
+            'zh-TW': {
+                title: '數位聖所',
+                subtitle: '你的寧靜治癒空間',
+                currentLang: '繁體中文',
+                navQuote: '每日禪語',
+                navTimer: '專注計時',
+                navMystic: '玄學區域',
+                navGames: '減壓遊戲',
+                navPsychology: '心理角落',
+                navBreathing: '呼吸練習',
+                navJournal: '情感日記',
+                navSounds: '自然音效',
+                newQuote: '新語錄',
+                start: '開始',
+                pause: '暫停',
+                reset: '重置',
+                breatheIn: '吸氣',
+                breatheOut: '呼氣',
+                tarotTitle: '塔羅牌',
+                drawCard: '抽牌',
+                moodCheck: '檢查心情',
+                saveJournal: '保存日記',
+                viewJournal: '查看記錄',
+                clearJournal: '清空',
+                playSound: '播放',
+                privacyNotice: '隱私聲明：所有數據僅存儲在您的設備上。我們不會收集任何個人信息。'
+            },
+            'en': {
+                title: 'Digital Sanctuary',
+                subtitle: 'Your peaceful healing space',
+                currentLang: 'English',
+                navQuote: 'Daily Quotes',
+                navTimer: 'Focus Timer',
+                navMystic: 'Mystic Zone',
+                navGames: 'Relaxing Games',
+                navPsychology: 'Psychology Corner',
+                navBreathing: 'Breathing Exercise',
+                navJournal: 'Emotional Journal',
+                navSounds: 'Nature Sounds',
+                newQuote: 'New Quote',
+                start: 'Start',
+                pause: 'Pause',
+                reset: 'Reset',
+                breatheIn: 'Breathe In',
+                breatheOut: 'Breathe Out',
+                tarotTitle: 'Tarot Cards',
+                drawCard: 'Draw Card',
+                moodCheck: 'Check Mood',
+                saveJournal: 'Save Journal',
+                viewJournal: 'View Entries',
+                clearJournal: 'Clear',
+                playSound: 'Play',
+                privacyNotice: 'Privacy Notice: All data is stored locally on your device only. We do not collect any personal information.'
+            },
+            'ko': {
+                title: '디지털 성소',
+                subtitle: '당신의 평화로운 치유 공간',
+                currentLang: '한국어',
+                navQuote: '일일 선어',
+                navTimer: '집중 타이머',
+                navMystic: '신비한 영역',
+                navGames: '스트레스 해소',
+                navPsychology: '심리학 코너',
+                navBreathing: '호흡 운동',
+                navJournal: '감정 일기',
+                navSounds: '자연음',
+                newQuote: '새로운 인용구',
+                start: '시작',
+                pause: '일시정지',
+                reset: '재설정',
+                breatheIn: '들숨',
+                breatheOut: '날숨',
+                tarotTitle: '타로 카드',
+                drawCard: '카드 뽑기',
+                moodCheck: '기분 확인',
+                saveJournal: '일기 저장',
+                viewJournal: '기록 보기',
+                clearJournal: '지우기',
+                playSound: '재생',
+                privacyNotice: '개인정보 보호: 모든 데이터는 귀하의 기기에만 로컬로 저장됩니다. 우리는 개인 정보를 수집하지 않습니다.'
+            },
+            'ja': {
+                title: 'デジタル聖所',
+                subtitle: 'あなたの静寂な癒しの空間',
+                currentLang: '日本語',
+                navQuote: '日々の禅',
+                navTimer: '集中タイマー',
+                navMystic: '神秘的な領域',
+                navGames: 'ストレス解消',
+                navPsychology: '心理学',
+                navBreathing: '呼吸運動',
+                navJournal: '感情日記',
+                navSounds: '自然音',
+                newQuote: '新しい引用',
+                start: '開始',
+                pause: '一時停止',
+                reset: 'リセット',
+                breatheIn: '吸気',
+                breatheOut: '呼気',
+                tarotTitle: 'タロットカード',
+                drawCard: 'カードを引く',
+                moodCheck: '気分チェック',
+                saveJournal: '日記を保存',
+                viewJournal: '記録を見る',
+                clearJournal: 'クリア',
+                playSound: '再生',
+                privacyNotice: 'プライバシー通知：すべてのデータはお客様のデバイスにのみローカルに保存されます。個人情報は収集いたしません。'
             }
+        };
 
-            // 点击其他地方关闭语言下拉菜单
-            document.addEventListener('click', function() {
-                if (languageDropdown) {
+        // 治愈语录数据
+        const quotes = {
+            'zh-CN': [
+                "每一个今天都是昨天死去的人期待的明天。",
+                "生活不是等待暴风雨过去，而是学会在雨中起舞。",
+                "你现在的努力，是你未来的底气。",
+                "世界以痛吻我，我却报之以歌。",
+                "山有峰顶，海有彼岸，漫漫长途，终有回转。",
+                "星光不问赶路人，岁月不负有心人。",
+                "愿你有好运，如果没有，愿你在不幸中学会慈悲。",
+                "生命中最重要的不是所站的位置，而是所朝的方向。"
+            ],
+            'zh-TW': [
+                "每一個今天都是昨天死去的人期待的明天。",
+                "生活不是等待暴風雨過去，而是學會在雨中起舞。",
+                "你現在的努力，是你未來的底氣。",
+                "世界以痛吻我，我卻報之以歌。",
+                "山有峰頂，海有彼岸，漫長長途，終有回轉。",
+                "星光不問趕路人，歲月不負有心人。",
+                "願你有好運，如果沒有，願你在不幸中學會慈悲。",
+                "生命中最重要的不是所站的位置，而是所朝的方向。"
+            ],
+            'en': [
+                "Every today is the tomorrow that someone who died yesterday was looking forward to.",
+                "Life isn't about waiting for the storm to pass, it's about learning to dance in the rain.",
+                "Your current efforts are the confidence of your future.",
+                "The world kissed me with pain, but I sang back.",
+                "Mountains have peaks, seas have shores, the long journey will eventually turn around.",
+                "Stars don't ask travelers, time doesn't disappoint those who care.",
+                "May you have good luck, if not, may you learn compassion in misfortune.",
+                "The most important thing in life is not where you stand, but the direction you face."
+            ],
+            'ko': [
+                "오늘은 어제 죽은 사람이 기다리던 내일입니다.",
+                "인생은 폭풍이 지나가기를 기다리는 것이 아니라, 비 속에서 춤추는 법을 배우는 것입니다.",
+                "지금의 노력은 미래의 자신감입니다.",
+                "세상이 고통으로 나에게 키스를 했지만, 나는 노래로 대답했습니다.",
+                "산에는 정상이 있고, 바다에는 언덕이 있으며, 긴 여정은 결국 돌아옵니다.",
+                "별들은 여행자를 묻지 않고, 시간은 마음을 쓰는 사람을 실망시키지 않습니다.",
+                "행운이 있기를 바랍니다. 없다면, 불운 속에서 자비를 배우기를 바랍니다.",
+                "인생에서 가장 중요한 것은 서 있는 위치가 아니라 향하는 방향입니다."
+            ],
+            'ja': [
+                "今日は昨日死んだ人が期待していた明日です。",
+                "人生は嵐が過ぎ去るのを待つことではなく、雨の中で踊ることを学ぶことです。",
+                "今の努力は、あなたの未来の自信です。",
+                "世界は痛みで私にキスをしましたが、私は歌で返しました。",
+                "山には頂があり、海には岸があり、長い旅路は最終的に回ってきます。",
+                "星は旅人に尋ねず、時間は心を配る人を失望させません。",
+                "幸運がありますように。なければ、不幸の中で慈悲を学びますように。",
+                "人生で最も重要なのは立っている場所ではなく、向いている方向です。"
+            ]
+        };
+
+        // 当前语言
+        let currentLang = localStorage.getItem('lang') || 'zh-CN';
+        let currentSection = 'quote';
+        let timerInterval;
+        let timerMinutes = 25;
+        let timerSeconds = 0;
+        let isTimerRunning = false;
+        let bubbleScore = 0;
+
+        // 初始化
+        function init() {
+            updateLanguage();
+            updateActiveLanguage(currentLang);
+            loadInitialQuote();
+            initBubbleGame();
+            initSandCanvas();
+        }
+
+        // 语言切换功能
+        const languageBtn = document.getElementById('languageBtn');
+        const languageDropdown = document.getElementById('languageDropdown');
+        
+        if (languageBtn) {
+            languageBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                languageDropdown.classList.toggle('show');
+            });
+        }
+
+        // 点击其他地方关闭语言下拉菜单
+        document.addEventListener('click', function() {
+            if (languageDropdown) {
+                languageDropdown.classList.remove('show');
+            }
+        });
+
+        // 语言选项点击事件
+        const languageOptions = document.querySelectorAll('.language-option');
+        languageOptions.forEach(option => {
+            option.addEventListener('click', function() {
+                const lang = this.dataset.lang;
+                if (lang && translations[lang]) {
+                    currentLang = lang;
+                    localStorage.setItem('lang', lang);
+                    updateLanguage();
+                    updateActiveLanguage(lang);
                     languageDropdown.classList.remove('show');
                 }
             });
+        });
 
-            // 语言选项点击事件
-            const languageOptions = document.querySelectorAll('.language-option');
-            languageOptions.forEach(option => {
-                option.addEventListener('click', function() {
-                    const lang = this.dataset.lang;
-                    if (lang && translations[lang]) {
-                        currentLang = lang;
-                        localStorage.setItem('lang', lang);
-                        updateLanguage();
-                        updateActiveLanguage(lang);
-                        languageDropdown.classList.remove('show');
-                    }
-                });
+        // 更新语言显示
+        function updateLanguage() {
+            const elements = document.querySelectorAll('[data-translate]');
+            elements.forEach(element => {
+                const key = element.dataset.translate;
+                if (translations[currentLang] && translations[currentLang][key]) {
+                    element.textContent = translations[currentLang][key];
+                }
             });
+            
+            // 更新语言按钮显示
+            if (languageBtn) {
+                const flagSpan = languageBtn.querySelector('.flag');
+                const langSpan = languageBtn.querySelector('[data-translate="currentLang"]');
+                if (flagSpan && langSpan) {
+                    flagSpan.className = `flag flag-${currentLang === 'zh-CN' ? 'cn' : currentLang === 'zh-TW' ? 'tw' : currentLang}`;
+                    langSpan.textContent = translations[currentLang].currentLang;
+                }
+            }
+        }
 
-            // 更新语言显示
-            function updateLanguage() {
-                const elements = document.querySelectorAll('[data-translate]');
-                elements.forEach(element => {
-                    const key = element.dataset.translate;
-                    if (translations[currentLang] && translations[currentLang][key]) {
-                        element.textContent = translations[currentLang][key];
+        // 更新活跃语言标记
+        function updateActiveLanguage(lang) {
+            languageOptions.forEach(option => {
+                option.classList.remove('active');
+                if (option.dataset.lang === lang) {
+                    option.classList.add('active');
+                }
+            });
+        }
+
+        // 导航按钮功能
+        const navBtns = document.querySelectorAll('.nav-btn');
+        const sections = document.querySelectorAll('.section');
+
+        navBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                const sectionName = this.dataset.section;
+                
+                // 移除所有按钮的active类
+                navBtns.forEach(b => b.classList.remove('active'));
+                // 添加active类到当前按钮
+                this.classList.add('active');
+                
+                // 隐藏所有section
+                sections.forEach(section => section.classList.remove('active'));
+                // 显示目标section
+                const targetSection = document.getElementById(sectionName);
+                if (targetSection) {
+                    targetSection.classList.add('active');
+                    currentSection = sectionName;
+                }
+            });
+        });
+
+        // 加载初始语录
+        function loadInitialQuote() {
+            if (quoteText) {
+                const currentQuotes = quotes[currentLang] || quotes['zh-CN'];
+                const randomIndex = Math.floor(Math.random() * currentQuotes.length);
+                quoteText.textContent = currentQuotes[randomIndex];
+            }
+        }
+
+        // 语录功能
+        const newQuoteBtn = document.getElementById('newQuoteBtn');
+        const quoteText = document.getElementById('quoteText');
+
+        if (newQuoteBtn) {
+            newQuoteBtn.addEventListener('click', function() {
+                const currentQuotes = quotes[currentLang] || quotes['zh-CN'];
+                const randomIndex = Math.floor(Math.random() * currentQuotes.length);
+                const newQuote = currentQuotes[randomIndex];
+                
+                if (quoteText) {
+                    quoteText.style.opacity = '0';
+                    setTimeout(() => {
+                        quoteText.textContent = newQuote;
+                        quoteText.style.opacity = '1';
+                    }, 300);
+                }
+            });
+        }
+
+        // 定时器功能
+        const startTimerBtn = document.getElementById('startTimer');
+        const pauseTimerBtn = document.getElementById('pauseTimer');
+        const resetTimerBtn = document.getElementById('resetTimer');
+        const timerDisplay = document.getElementById('timerDisplay');
+
+        function updateTimerDisplay() {
+            const minutes = String(timerMinutes).padStart(2, '0');
+            const seconds = String(timerSeconds).padStart(2, '0');
+            if (timerDisplay) {
+                timerDisplay.textContent = `${minutes}:${seconds}`;
+            }
+        }
+
+        function startTimer() {
+            if (!isTimerRunning) {
+                isTimerRunning = true;
+                timerInterval = setInterval(() => {
+                    if (timerSeconds === 0) {
+                        if (timerMinutes === 0) {
+                            // 计时结束
+                            clearInterval(timerInterval);
+                            isTimerRunning = false;
+                            alert(currentLang === 'zh-CN' ? '时间到！' : 'Time\'s up!');
+                            return;
+                        }
+                        timerMinutes--;
+                        timerSeconds = 59;
+                    } else {
+                        timerSeconds--;
+                    }
+                    updateTimerDisplay();
+                }, 1000);
+            }
+        }
+
+        function pauseTimer() {
+            if (isTimerRunning) {
+                clearInterval(timerInterval);
+                isTimerRunning = false;
+            }
+        }
+
+        function resetTimer() {
+            clearInterval(timerInterval);
+            isTimerRunning = false;
+            timerMinutes = 25;
+            timerSeconds = 0;
+            updateTimerDisplay();
+        }
+
+        if (startTimerBtn) {
+            startTimerBtn.addEventListener('click', startTimer);
+        }
+        if (pauseTimerBtn) {
+            pauseTimerBtn.addEventListener('click', pauseTimer);
+        }
+        if (resetTimerBtn) {
+            resetTimerBtn.addEventListener('click', resetTimer);
+        }
+
+        // 塔罗牌功能
+        const tarotBtn = document.getElementById('tarotBtn');
+        const tarotCards = [
+            '愚者 - 新的开始和冒险',
+            '魔术师 - 创造力和意志力',
+            '女祭司 - 直觉和内在智慧',
+            '皇后 - 丰饶和母性能量',
+            '皇帝 - 权威和稳定',
+            '教皇 - 传统和精神指导',
+            '恋人 - 选择和关系',
+            '战车 - 意志力和控制',
+            '力量 - 内在力量和勇气',
+            '隐者 - 内省和寻求真理',
+            '命运之轮 - 变化和命运',
+            '正义 - 平衡和公正'
+        ];
+
+        if (tarotBtn) {
+            tarotBtn.addEventListener('click', function() {
+                const randomCard = tarotCards[Math.floor(Math.random() * tarotCards.length)];
+                const resultElement = this.parentElement.querySelector('.mystic-result');
+                if (resultElement) {
+                    resultElement.style.display = 'block';
+                    resultElement.style.opacity = '0';
+                    setTimeout(() => {
+                        resultElement.textContent = randomCard;
+                        resultElement.style.opacity = '1';
+                    }, 300);
+                }
+            });
+        }
+
+        // 幸运饼干功能
+        const fortuneBtn = document.getElementById('fortuneBtn');
+        const fortunes = [
+            '今天会有好运降临',
+            '保持微笑，好事即将发生',
+            '你的努力终将得到回报',
+            '相信自己，你比想象中更强大',
+            '每一个挑战都是成长的机会',
+            '保持耐心，最好的还在后面'
+        ];
+
+        if (fortuneBtn) {
+            fortuneBtn.addEventListener('click', function() {
+                const randomFortune = fortunes[Math.floor(Math.random() * fortunes.length)];
+                const resultElement = this.parentElement.querySelector('.mystic-result');
+                if (resultElement) {
+                    resultElement.style.display = 'block';
+                    resultElement.style.opacity = '0';
+                    setTimeout(() => {
+                        resultElement.textContent = randomFortune;
+                        resultElement.style.opacity = '1';
+                    }, 300);
+                }
+            });
+        }
+
+        // 星座运势功能
+        const astrologyBtn = document.getElementById('astrologyBtn');
+        const astrologyTips = [
+            '白羊座：今天适合尝试新事物',
+            '金牛座：保持稳定，避免冲动',
+            '双子座：沟通能力增强',
+            '巨蟹座：家庭关系和谐',
+            '狮子座：领导才能得到认可',
+            '处女座：细节处理能力提升',
+            '天秤座：人际关系改善',
+            '天蝎座：直觉敏锐',
+            '射手座：冒险精神旺盛',
+            '摩羯座：工作进展顺利',
+            '水瓶座：创意灵感丰富',
+            '双鱼座：艺术天赋显现'
+        ];
+
+        if (astrologyBtn) {
+            astrologyBtn.addEventListener('click', function() {
+                const randomTip = astrologyTips[Math.floor(Math.random() * astrologyTips.length)];
+                const resultElement = this.parentElement.querySelector('.mystic-result');
+                if (resultElement) {
+                    resultElement.style.display = 'block';
+                    resultElement.style.opacity = '0';
+                    setTimeout(() => {
+                        resultElement.textContent = randomTip;
+                        resultElement.style.opacity = '1';
+                    }, 300);
+                }
+            });
+        }
+
+        // 泡泡游戏
+        function initBubbleGame() {
+            const bubbleGame = document.querySelector('.bubble-game');
+            if (!bubbleGame) return;
+
+            function createBubble() {
+                const bubble = document.createElement('div');
+                bubble.className = 'bubble';
+                
+                const size = Math.random() * 50 + 20;
+                bubble.style.width = size + 'px';
+                bubble.style.height = size + 'px';
+                bubble.style.left = Math.random() * (bubbleGame.offsetWidth - size) + 'px';
+                bubble.style.top = bubbleGame.offsetHeight + 'px';
+                
+                bubble.addEventListener('click', function() {
+                    this.remove();
+                    bubbleScore++;
+                    const scoreElement = document.getElementById('bubbleScore');
+                    if (scoreElement) {
+                        scoreElement.textContent = bubbleScore;
                     }
                 });
                 
-                // 更新语言按钮显示
-                if (languageBtn) {
-                    const flagSpan = languageBtn.querySelector('.flag');
-                    const langSpan = languageBtn.querySelector('[data-translate="currentLang"]');
-                    if (flagSpan && langSpan) {
-                        flagSpan.className = `flag flag-${currentLang === 'zh-CN' ? 'cn' : currentLang === 'zh-TW' ? 'tw' : currentLang}`;
-                        langSpan.textContent = translations[currentLang].currentLang;
+                bubbleGame.appendChild(bubble);
+                
+                // 让泡泡向上移动
+                let position = bubbleGame.offsetHeight;
+                const moveUp = setInterval(() => {
+                    position -= 2;
+                    bubble.style.top = position + 'px';
+                    
+                    if (position < -size) {
+                        bubble.remove();
+                        clearInterval(moveUp);
                     }
+                }, 50);
+            }
+
+            // 定期创建新泡泡
+            setInterval(createBubble, 1000);
+        }
+
+        // 沙画游戏
+        function initSandCanvas() {
+            const canvas = document.querySelector('.sand-canvas');
+            if (!canvas || canvas.tagName !== 'CANVAS') return;
+            
+            const ctx = canvas.getContext('2d');
+            let isDrawing = false;
+            
+            canvas.width = canvas.offsetWidth;
+            canvas.height = canvas.offsetHeight;
+            
+            ctx.fillStyle = '#f7fafc';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            canvas.addEventListener('mousedown', startDrawing);
+            canvas.addEventListener('mousemove', draw);
+            canvas.addEventListener('mouseup', stopDrawing);
+            canvas.addEventListener('mouseout', stopDrawing);
+            
+            function startDrawing(e) {
+                isDrawing = true;
+                draw(e);
+            }
+            
+            function draw(e) {
+                if (!isDrawing) return;
+                
+                const rect = canvas.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                ctx.globalCompositeOperation = 'source-over';
+                ctx.fillStyle = '#667eea';
+                ctx.beginPath();
+                ctx.arc(x, y, 3, 0, Math.PI * 2);
+                ctx.fill();
+            }
+            
+            function stopDrawing() {
+                isDrawing = false;
+            }
+        }
+
+        // 心理测试功能
+        const moodCheckBtn = document.querySelector('.mood-check-btn');
+        if (moodCheckBtn) {
+            moodCheckBtn.addEventListener('click', function() {
+                const selectedMood = document.querySelector('input[name="mood"]:checked');
+                const resultElement = document.querySelector('.mood-result');
+                
+                if (!selectedMood) {
+                    alert(currentLang === 'zh-CN' ? '请选择一个选项！' : 'Please select an option!');
+                    return;
                 }
-            }
-
-            // 更新活跃语言标记
-            function updateActiveLanguage(lang) {
-                languageOptions.forEach(option => {
-                    option.classList.remove('active');
-                    if (option.dataset.lang === lang) {
-                        option.classList.add('active');
+                
+                const responses = {
+                    'zh-CN': {
+                        happy: '太好了！保持这种积极的心态，你正在发光✨',
+                        calm: '内心平静是一种珍贵的状态，好好珍惜这份宁静🌸',
+                        anxious: '焦虑是正常的情绪，试试深呼吸，一切都会好起来的🌈',
+                        sad: '难过的时候允许自己哭泣，这也是治愈的一部分💙',
+                        tired: '休息是为了走更远的路，给自己一些时间恢复能量🌙'
+                    },
+                    'en': {
+                        happy: 'Wonderful! Keep this positive attitude, you are shining✨',
+                        calm: 'Inner peace is a precious state, cherish this tranquility🌸',
+                        anxious: 'Anxiety is normal, try deep breathing, everything will be fine🌈',
+                        sad: 'It\'s okay to cry when sad, this is also part of healing💙',
+                        tired: 'Rest is for going further, give yourself time to recover🌙'
                     }
-                });
-            }
-
-            // 导航按钮功能
-            const navBtns = document.querySelectorAll('.nav-btn');
-            const sections = document.querySelectorAll('.section');
-
-            navBtns.forEach(btn => {
-                btn.addEventListener('click', function() {
-                    const sectionName = this.dataset.section;
-                    
-                    // 移除所有按钮的active类
-                    navBtns.forEach(b => b.classList.remove('active'));
-                    // 添加active类到当前按钮
-                    this.classList.add('active');
-                    
-                    // 隐藏所有section
-                    sections.forEach(section => section.classList.remove('active'));
-                    // 显示目标section
-                    const targetSection = document.getElementById(sectionName);
-                    if (targetSection) {
-                        targetSection.classList.add('active');
-                        currentSection = sectionName;
-                    }
-                });
+                };
+                
+                const mood = selectedMood.value;
+                const response = responses[currentLang] && responses[currentLang][mood] 
+                               ? responses[currentLang][mood] 
+                               : responses['zh-CN'][mood];
+                
+                if (resultElement) {
+                    resultElement.style.display = 'block';
+                    resultElement.style.opacity = '0';
+                    setTimeout(() => {
+                        resultElement.textContent = response;
+                        resultElement.style.opacity = '1';
+                    }, 300);
+                }
             });
+        }
 
-            // 语录功能
-            const newQuoteBtn = document.getElementById('newQuoteBtn');
-            const quoteText = document.getElementById('quoteText');
-
-            if (newQuoteBtn) {
-                newQuoteBtn.addEventListener('click', function() {
-                    const currentQuotes = quotes[currentLang] || quotes['zh-CN'];
-                    const randomIndex = Math.floor(Math.random() * currentQuotes.length);
-                    const newQuote = currentQuotes[randomIndex];
-                    
-                    if (quoteText) {
-                        quoteText.style.opacity = '0';
-                        setTimeout(() => {
-                            quoteText.textContent = newQuote;
-                            quoteText.style.opacity = '1';
-                        }, 300);
-                    }
-                });
-            }
-
-            // 定时器功能
-            const startTimerBtn = document.getElementById('startTimer');
-            const pauseTimerBtn = document.getElementById('pauseTimer');
-            const resetTimerBtn = document.getElementById('resetTimer');
-            const timerDisplay = document.getElementById('timerDisplay');
-
-            function updateTimerDisplay() {
-                const minutes = String(timerMinutes).padStart(2, '0');
-                const seconds = String(timerSeconds).padStart(2, '0');
-                if (timerDisplay) {
-                    timerDisplay.textContent = `${minutes}:${seconds}`;
+        // 日记功能
+        let journalEntries = JSON.parse(localStorage.getItem('journalEntries') || '[]');
+        
+        const journalTextarea = document.querySelector('.journal-textarea');
+        const saveJournalBtn = document.querySelector('.journal-btn:first-child');
+        const showEntriesBtn = document.querySelector('.journal-btn:nth-child(2)');
+        const clearJournalBtn = document.querySelector('.journal-btn:last-child');
+        const journalEntriesDiv = document.querySelector('.journal-entries');
+        
+        if (saveJournalBtn) {
+            saveJournalBtn.addEventListener('click', function() {
+                if (!journalTextarea || !journalTextarea.value.trim()) {
+                    alert(currentLang === 'zh-CN' ? '请写点什么再保存！' : 'Please write something before saving!');
+                    return;
                 }
-            }
+                
+                const entry = {
+                    date: new Date().toLocaleDateString(),
+                    text: journalTextarea.value.trim()
+                };
+                
+                journalEntries.unshift(entry);
+                localStorage.setItem('journalEntries', JSON.stringify(journalEntries));
+                journalTextarea.value = '';
+                
+                alert(currentLang === 'zh-CN' ? '日记保存成功！' : 'Journal saved successfully!');
+            });
+        }
+        
+        if (showEntriesBtn) {
+            showEntriesBtn.addEventListener('click', function() {
+                if (!journalEntriesDiv) return;
+                
+                if (journalEntriesDiv.style.display === 'none' || !journalEntriesDiv.style.display) {
+                    displayJournalEntries();
+                    journalEntriesDiv.style.display = 'block';
+                    this.textContent = currentLang === 'zh-CN' ? '隐藏记录' : 'Hide Entries';
+                } else {
+                    journalEntriesDiv.style.display = 'none';
+                    this.textContent = currentLang === 'zh-CN' ? '查看记录' : 'View Entries';
+                }
+            });
+        }
 
-            function startTimer() {
-                if (!isTimerRunning) {
-                    isTimerRunning = true;
-                    timerInterval = setInterval(() => {
-                        if 
+        if (clearJournalBtn) {
+            clearJournalBtn.addEventListener('click', function() {
+                if (confirm(currentLang === 'zh-CN' ? '确定要清空所有日记吗？' : 'Are you sure you want to clear all journal entries?')) {
+                    journalEntries = [];
+                    localStorage.setItem('journalEntries', JSON.stringify(journalEntries));
+                    journalEntriesDiv.innerHTML = '';
+                    journalEntriesDiv.style.display = 'none';
+                    showEntriesBtn.textContent = currentLang === 'zh-CN' ? '查看记录' : 'View Entries';
+                }
+            });
+        }
+        
+        function displayJournalEntries() {
+            if (!journalEntriesDiv) return;
+            
+            journalEntriesDiv.innerHTML = '';
+            
+            if (journalEntries.length === 0) {
+                journalEntriesDiv.innerHTML = `<p>${currentLang === 'zh-CN' ? '还没有日记记录' : 'No journal entries yet'}</p>`;
+                return;
+            }
+            
+            journalEntries.forEach(entry => {
+                const entryDiv = document.createElement('div');
+                entryDiv.className = 'journal-entry';
+                entryDiv.innerHTML = `
+                    <div class="entry-date">${entry.date}</div>
+                    <div class="entry-text">${entry.text}</div>
+                `;
+                journalEntriesDiv.appendChild(entryDiv);
+            });
+        }
+
+        // 自然音效功能
+        const soundToggles = document.querySelectorAll('.sound-toggle');
+        const audioElements = new Map();
+        
+        // 创建音频元素（这里使用占位符，实际需要真实的音频文件）
+        const soundFiles = {
+            rain: 'data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcBjiR1/LMeSwFJHfH8N2QQAkUXrTp66hVFApGn+D1wWwiBzvS3/LCcCUFjOY=',
+            ocean: 'data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcBjiR1/LMeSwFJHfH8N2QQAkUXrTp66hVFApGn+D1wWwiBzvS3/LCcCUFjOY=',
+            forest: 'data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcBjiR1/LMeSwFJHfH8N2QQAkUXrTp66hVFApGn+D1wWwiBzvS3/LCcCUFjOY=',
+            birds: 'data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcBjiR1/LMeSwFJHfH8N2QQAkUXrTp66hVFApGn+D1wWwiBzvS3/LCcCUFjOY='
+        };
+        
+        soundToggles.forEach(toggle => {
+            toggle.addEventListener('click', function() {
+                const soundName = this.dataset.sound;
+                
+                if (this.classList.contains('playing')) {
+                    // 停止播放
+                    const audio = audioElements.get(soundName);
+                    if (audio) {
+                        audio.pause();
+                        audio.currentTime = 0;
+                    }
+                    this.classList.remove('playing');
+                    this.textContent = currentLang === 'zh-CN' ? '播放' : 'Play';
+                } else {
+                    // 开始播放
+                    let audio = audioElements.get(soundName);
+                    if (!audio) {
+                        audio = new Audio(soundFiles[soundName] || soundFiles.rain);
+                        audio.loop = true;
+                        audioElements.set(soundName, audio);
+                    }
+                    
+                    audio.play().catch(e => {
+                        console.log('Audio play failed:', e);
+                        alert(currentLang === 'zh-CN' ? '音频播放失败，请检查浏览器设置' : 'Audio play failed, please check browser settings');
+                    });
+                    
+                    this.classList.add('playing');
+                    this.textContent = currentLang === 'zh-CN' ? '停止' : 'Stop';
+                }
+            });
+        });
+
+        // 音量控制
+        const volumeSliders = document.querySelectorAll('.volume-slider');
+        volumeSliders.forEach(slider => {
+            slider.addEventListener('input', function() {
+                const soundName = this.dataset.sound;
+                const audio = audioElements.get(soundName);
+                if (audio) {
+                    audio.volume = this.value / 100;
+                }
+            });
+        });
+
+        // 呼吸练习动画控制
+        const breathingText = document.getElementById('breathingText');
+        let breathingPhase = 0; // 0: 吸气, 1: 屏息, 2: 呼气, 3: 暂停
+        const breathingTexts = {
+            'zh-CN': ['吸气 (4秒)', '屏息 (7秒)', '呼气 (8秒)', '准备...'],
+            'en': ['Breathe In (4s)', 'Hold (7s)', 'Breathe Out (8s)', 'Prepare...']
+        };
+        const breathingDurations = [4000, 7000, 8000, 1000]; // 4-7-8呼吸法
+
+        function updateBreathingText() {
+            if (breathingText && currentSection === 'breathing') {
+                const texts = breathingTexts[currentLang] || breathingTexts['zh-CN'];
+                breathingText.textContent = texts[breathingPhase];
+                
+                setTimeout(() => {
+                    breathingPhase = (breathingPhase + 1) % 4;
+                    updateBreathingText();
+                }, breathingDurations[breathingPhase]);
+            }
+        }
+
+        // 当切换到呼吸练习页面时开始动画
+        navBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                if (this.dataset.section === 'breathing') {
+                    setTimeout(updateBreathingText, 500);
+                }
+            });
+        });
+
+        // 初始化
+        init();
+        
+        console.log('数字圣所初始化完成！');
+    });
+</script>
